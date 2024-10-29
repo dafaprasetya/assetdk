@@ -17,10 +17,13 @@ class CreateBarangsTable extends Migration
             $table->char('dkasset')->primary();
             $table->string('nama_asset');
             $table->string('merk')->nullable();
-            $table->string('kategori')->nullable();
+            $table->unsignedBigInteger('kategoriId')->nullable();
+            $table->foreign('kategoriId')->references('id')->on('kategoris')->onDelete('cascade')->nullable();
             $table->string('user')->nullable()->default('Team asset');
-            $table->string('jabatan')->nullable()->default('staff');
-            $table->string('divisi')->nullable()->default('Asset');
+            $table->unsignedBigInteger('jabatanId')->nullable();
+            $table->foreign('jabatanId')->references('id')->on('jabatans')->onDelete('cascade')->nullable();
+            $table->unsignedBigInteger('divisiId')->nullable();
+            $table->foreign('divisiId')->references('id')->on('divisis')->onDelete('cascade')->nullable();
             $table->string('area')->nullable()->default('Asset');
             $table->string('lokasi')->nullable()->default('Taman Sari Persada');
             $table->string('status_aktif')->nullable();
@@ -34,6 +37,7 @@ class CreateBarangsTable extends Migration
             $table->string('keterangan_asset')->nullable();
             $table->string('status_label_kode')->nullable();
             $table->string('status')->nullable();
+            // $table->string('qr')->nullable();
             $table->timestamps();
         });
     }

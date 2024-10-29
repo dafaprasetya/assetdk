@@ -25,10 +25,17 @@ class HomeController extends Controller
     public function index()
     {
         $listbarang = Barang::all();
-
+        $totalasset = Barang::count();
+        $totalassetbaik = Barang::where('kondisi', 'Baik')->count();
+        $totalassetrusak = Barang::where('kondisi', 'Rusak')->count();
+        $totalassetperbaikan = Barang::where('kondisi', 'Maintenance')->count();
         $data = [
             'asset'=> $listbarang,
+            'totalasset'=> $totalasset,
+            'totalassetbaik'=> $totalassetbaik,
+            'totalassetrusak'=> $totalassetrusak,
+            'totalassetperbaikan'=> $totalassetperbaikan,
         ];
-        return view('admin.asset.dashboard', $data);
+        return view('dashboard', $data);
     }
 }

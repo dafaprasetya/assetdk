@@ -1,4 +1,4 @@
-@extends('admin.asset.core')
+@extends('admin.core')
 
 @section('content')
 {{ $title }}

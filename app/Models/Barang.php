@@ -14,10 +14,10 @@ class Barang extends Model
         "dkasset",
         "nama_asset",
         "merk",
-        "kategori",
+        "kategoriId",
         "user",
-        "jabatan",
-        "divisi",
+        "jabatanId",
+        "divisiId",
         "area",
         "lokasi",
         "status_aktif",
@@ -28,18 +28,27 @@ class Barang extends Model
         "tanggal",
         "signature",
         "foto_tanda_terima",
-        "keterangan_aset",
+        "keterangan_asset",
         "status_label_kode",
         "status"
     ];
+    protected $primaryKey = 'dkasset';
+    public $incrementing = false;
+    protected $keyType = 'string';
 
-    public function history(){
-        return $this->hasMany(History::class);
-    }
-    public function serahterima(){
-        return $this->hasMany(SerahTerima::class);
-    }
-    // public function kategori() {
-    //     return $this->belongsTo(Kategori::class);
+    // public function history(){
+    //     return $this->hasMany(History::class);
     // }
+    // public function serahterima(){
+    //     return $this->hasMany(SerahTerima::class);
+    // }
+    public function kategori() {
+        return $this->belongsTo(Kategori::class, 'kategoriId');
+    }
+    public function jabatan() {
+        return $this->belongsTo(Jabatan::class, 'jabatanId');
+    }
+    public function divisi() {
+        return $this->belongsTo(Divisi::class, 'divisiId');
+    }
 }

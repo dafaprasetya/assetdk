@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AssetController;
+use App\Http\Controllers\ITController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,17 +16,42 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 // Route assets/barang
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'asset', 'IT'])->group(function () {
     Route::get('/asset',[AssetController::class, 'index'])->name('listasset');
     Route::get('/asset/tambah/asset',[AssetController::class, 'tambahbarang'])->name('tambahasset');
+    Route::get('/asset/edit/{dkasset}',[AssetController::class, 'edit'])->name('editasset');
+    Route::post('/asset/edit/{dkasset}/p',[AssetController::class, 'editpost'])->name('editassetpost');
+    Route::post('/asset/d/{dkasset}',[AssetController::class, 'hapus'])->name('hapusasset');
     Route::post('/asset/tambah/asset/upload',[AssetController::class, 'tambahbarangpost'])->name('tambahassetpost');
     Route::get('/asset/serahterima',[AssetController::class, 'serahterima'])->name('buatserahterima');
-
+    Route::get('/asset/cetak/all',[AssetController::class, 'cetaksemua'])->name('cetak');
 });
+Route::middleware(['auth','IT'])->group(function () {
+    // USER
+    Route::get('/IT/user',[ITController::class, 'userlist'])->name('userlist');
+    Route::post('/IT/user/edit/{nik}',[ITController::class, 'edituser'])->name('edituser');
+    Route::post('/IT/user/hapus/{nik}',[ITController::class, 'deleteuser'])->name('hapususer');
+    // KATEGORI
+    Route::get('/IT/kategori',[ITController::class, 'kategorilist'])->name('kategorilist');
+    Route::post('/IT/kategori/hapus/{id}',[ITController::class, 'deletekategori'])->name('hapuskategori');
+    Route::post('/IT/kategori/edit/{id}',[ITController::class, 'editkategori'])->name('editkategori');
+    Route::post('/IT/kategori/buat',[ITController::class, 'buatkategori'])->name('buatkategori');
+    // JABATAN
+    Route::get('/IT/jabatan',[ITController::class, 'jabatanlist'])->name('jabatanlist');
+    Route::post('/IT/jabatan/hapus/{id}',[ITController::class, 'deletejabatan'])->name('hapusjabatan');
+    Route::post('/IT/jabatan/edit/{id}',[ITController::class, 'editjabatan'])->name('editjabatan');
+    Route::post('/IT/jabatan/buat',[ITController::class, 'buatjabatan'])->name('buatjabatan');
+    // DIVISI
+    Route::get('/IT/divisi',[ITController::class, 'divisilist'])->name('divisilist');
+    Route::post('/IT/divisi/hapus/{id}',[ITController::class, 'deletedivisi'])->name('hapusdivisi');
+    Route::post('/IT/divisi/edit/{id}',[ITController::class, 'editdivisi'])->name('editdivisi');
+    Route::post('/IT/divisi/buat',[ITController::class, 'buatdivisi'])->name('buatdivisi');
+});
+Route::get('/asset/{dkasset}',[AssetController::class, 'show'])->name('detailasset');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
