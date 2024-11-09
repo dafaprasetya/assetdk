@@ -15,16 +15,22 @@ class CreateSerahTerimasTable extends Migration
     {
         Schema::create('serah_terimas', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_penerima');
-            $table->string('divisi_penerima');
-            $table->string('nama_pemberi');
-            $table->string('divisi_pemberi');
             $table->char('dkasset');
             $table->foreign('dkasset')->references('dkasset')->on('barangs')->onDelete('cascade');
-            $table->enum('kondisi', ['baik', 'rusak']);
+            $table->string('nama_penerima');
+            $table->string('divisi_penerima')->nullable();
+            $table->string('jabatan_penerima')->nullable();
+            $table->string('ttd_penerima');
+            $table->string('nama_penyerah');
+            $table->string('divisi_penyerah')->nullable();
+            $table->string('jabatan_penyerah')->nullable();
+            $table->string('ttd_penyerah');
+            $table->string('kondisi');
+            $table->string('foto');
+            $table->string('tempat');
             $table->string('deskripsi');
+            $table->string('bukti')->nullable();
             $table->timestamp('waktu')->useCurrent();
-            $table->string('bukti');
             $table->timestamps();
         });
     }

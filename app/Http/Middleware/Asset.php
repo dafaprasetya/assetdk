@@ -17,10 +17,7 @@ class Asset
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->divisi === 'Asset') {
-            return $next($request);
-        }
-        if (Auth::check() && Auth::user()->divisi === 'IT') {
+        if (Auth::check() && Auth::user()->divisi === 'Asset' or 'IT') {
             return $next($request);
         }
         return redirect('/')->with('error', 'anda tidak punya akses kesana');

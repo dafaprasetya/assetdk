@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\ITController;
+use App\Http\Controllers\STController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,15 +21,18 @@ Route::get('/', function () {
 });
 
 // Route assets/barang
-Route::middleware(['auth', 'asset', 'IT'])->group(function () {
+Route::middleware(['auth', 'asset'])->group(function () {
     Route::get('/asset',[AssetController::class, 'index'])->name('listasset');
     Route::get('/asset/tambah/asset',[AssetController::class, 'tambahbarang'])->name('tambahasset');
     Route::get('/asset/edit/{dkasset}',[AssetController::class, 'edit'])->name('editasset');
     Route::post('/asset/edit/{dkasset}/p',[AssetController::class, 'editpost'])->name('editassetpost');
     Route::post('/asset/d/{dkasset}',[AssetController::class, 'hapus'])->name('hapusasset');
     Route::post('/asset/tambah/asset/upload',[AssetController::class, 'tambahbarangpost'])->name('tambahassetpost');
-    Route::get('/asset/serahterima',[AssetController::class, 'serahterima'])->name('buatserahterima');
     Route::get('/asset/cetak/all',[AssetController::class, 'cetaksemua'])->name('cetak');
+    Route::get('/asset/serahterima',[STController::class, 'index'])->name('serahterima');
+    Route::get('/asset/serahterima/buat',[STController::class, 'buatserahterima'])->name('buatserahterima');
+    Route::post('/asset/serahterima/create',[STController::class, 'create'])->name('createserahterima');
+    Route::get('/asset/serahterima/show/{id}',[STController::class, 'show'])->name('showserahterima');
 });
 Route::middleware(['auth','IT'])->group(function () {
     // USER

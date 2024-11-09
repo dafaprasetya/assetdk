@@ -33,34 +33,102 @@
                 <h3 style="color: black">{{ $asset->dkasset }}</h3>
             </div>
             <div class="col-md-6">
-                Nama Asset: {{ $asset->nama_asset }}
-                <br>
-                Merk: {{ $asset->merk }}
-                <br>
-                Kategori: {{ $asset->kategori->nama }}
-                User: {{ $asset->user }}
-                <br>
-                Jabatan: {{ $asset->jabatan->nama }}
-                <br>
-                Divisi: {{ $asset->divisi->nama }}
-                <br>
-                Lokasi: {{ $asset->lokasi }}
-                <br>
-                Area: {{ $asset->area }}
-                <br>
-                Status aktif: {{ $asset->status_aktif }}
-                <br>
-                Kondisi: {{ $asset->kondisi }}
-                <br>
-                Quantity: {{ $asset->QTY }}
-                <br>
-                Asset Validasi: {{ $asset->asset_validasi }}
-                <br>
-                Tanggal: {{ $asset->tanggal }}
+                <div class="row">
+                    <div class="col-md-12">
+                        <table>
+                            <tr>
+                                <td style="width: 150px">Nama Asset</td>
+                                <td>:</td>
+                                <td>{{ $asset->nama_asset }}</td>
+                            </tr>
+                            <tr>
+                                <td>Kategori</td>
+                                <td>:</td>
+                                <td>{{ $asset->kategori->nama }}</td>
+                            </tr>
+                            <tr>
+                                <td>User</td>
+                                <td>:</td>
+                                <td>{{ $asset->user }}</td>
+                            </tr>
+                            <tr>
+                                <td>Jabatan</td>
+                                <td>:</td>
+                                <td>{{ $asset->jabatan->nama }}</td>
+                            </tr>
+                            <tr>
+                                <td>Divisi</td>
+                                <td>:</td>
+                                <td>{{ $asset->divisi->nama }}</td>
+                            </tr>
+                            <tr>
+                                <td>Lokasi</td>
+                                <td>:</td>
+                                <td>{{ $asset->lokasi }}</td>
+                            </tr>
+                            <tr>
+                                <td>Area</td>
+                                <td>:</td>
+                                <td>{{ $asset->area }}</td>
+                            </tr>
+                            <tr>
+                                <td>Status Aktif</td>
+                                <td>:</td>
+                                <td>{{ $asset->status_aktif }}</td>
+                            </tr>
+                            <tr>
+                                <td>Kondisi</td>
+                                <td>:</td>
+                                <td>{{ $asset->kondisi }}</td>
+                            </tr>
+                            <tr>
+                                <td>Quantity</td>
+                                <td>:</td>
+                                <td>{{ $asset->QTY }}</td>
+                            </tr>
+                            <tr>
+                                <td>Asset Validasi</td>
+                                <td>:</td>
+                                <td>{{ $asset->asset_validasi }}</td>
+                            </tr>
+                            <tr>
+                                <td>Tanggal</td>
+                                <td>:</td>
+                                <td>{{ $asset->tanggal }}</td>
+                            </tr>
+                            @if (!empty($asset->signature))
+                            <tr>
+                                <td>Signature</td>
+                                <td>:</td>
+                                <td><a href="#" data-toggle="modal" data-target="#SignatureModal">Klik menampilkan signature </a></td>
+                            </tr>
+                            @endif
+                            @if (!empty($asset->foto_tanda_terima))
+                            <tr>
+                                <td>Foto Tanda Terima</td>
+                                <td>:</td>
+                                <td><a href="#" data-toggle="modal" data-target="#TandaTerimaModal">Klik menampilkan foto tanda terima </a></td>
+                            </tr>
+                            @endif
+                            <tr>
+                                <td>Status</td>
+                                <td>:</td>
+                                <td>{{ $asset->status }}</td>
+                            </tr>
+                            <tr>
+                                <td>QR</td>
+                                <td>:</td>
+                                <td><a href="#" data-toggle="modal" data-target="#QRModal">Klik untuk menampilkan QR </a></td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                </div>
+                
                 @if (!empty($asset->signature))
                 <br>
                     {{-- {{ $asset->signature }} --}}
-                    Signature: <a href="#" data-toggle="modal" data-target="#SignatureModal">Klik menampilkan signature </a>
+                    {{-- Signature: <a href="#" data-toggle="modal" data-target="#SignatureModal">Klik menampilkan signature </a> --}}
                     {{-- MODALLL SIGNATUREEE --}}
                     <div class="modal fade" id="SignatureModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -84,7 +152,7 @@
                 <br>
                 @if (!empty($asset->foto_tanda_terima))
                     {{-- {{ $asset->signature }} --}}
-                    Tanda Terima: <a href="#" data-toggle="modal" data-target="#TandaTerimaModal">Klik menampilkan foto tanda terima </a>
+                    {{-- Tanda Terima: <a href="#" data-toggle="modal" data-target="#TandaTerimaModal">Klik menampilkan foto tanda terima </a> --}}
                     {{-- MODALLL SIGNATUREEE --}}
                     <div class="modal fade" id="TandaTerimaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -106,9 +174,9 @@
                     </div>
                 @endif
                 <br>
-                Status: {{ $asset->status }}
+                {{-- Status: {{ $asset->status }} --}}
                 <br>
-                QR : <a href="#" data-toggle="modal" data-target="#QRModal">Klik untuk menampilkan QR </a>
+                {{-- QR : <a href="#" data-toggle="modal" data-target="#QRModal">Klik untuk menampilkan QR </a> --}}
                 {{-- MODALLL QR --}}
                 <div class="modal fade" id="QRModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -131,6 +199,60 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#HistoryModal">history</button>
+            </div>
+            {{-- {{ $asset->signature }} --}}
+            {{-- MODALLL SIGNATUREEE --}}
+            <div class="modal fade" id="HistoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">History Asset</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            {{-- {{ $asset->history }} --}}
+                            <div class="container">
+
+                                @foreach ($asset->history as $history)
+                                    <div class="row">
+                                        <div class="col-md-12" style="font-weight: 700">{{ $history->waktu }}</div>
+                                        <div class="col-md-12">
+                                            <table>
+                                                <tr>
+                                                    <td style="width: 100px">nama</td>
+                                                    <td>:</td>
+                                                    <td>{{ $history->pemegang }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Divisi</td>
+                                                    <td>:</td>
+                                                    <td>{{ $history->divisi_pemegang }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Deskripsi</td>
+                                                    <td>:</td>
+                                                    <td>{{ $history->deskripsi }}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Tutup</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
         
     </div>

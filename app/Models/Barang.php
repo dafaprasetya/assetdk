@@ -51,4 +51,7 @@ class Barang extends Model
     public function divisi() {
         return $this->belongsTo(Divisi::class, 'divisiId');
     }
+    public function history() {
+        return $this->hasMany(History::class, 'dkasset');
+    }
 }

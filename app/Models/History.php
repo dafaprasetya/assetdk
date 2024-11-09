@@ -10,6 +10,6 @@ class History extends Model
     use HasFactory;
 
     public function barang() {
-        return $this->belongsTo(Barang::class);
+        return $this->belongsTo(Barang::class, 'dkasset');
     }
 }

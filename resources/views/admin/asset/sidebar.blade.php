@@ -23,13 +23,13 @@
 
     <!-- Nav Item - Add -->
     <li class="nav-item">
-        <a class="nav-link" href="{{route('buatserahterima')}}">
+        <a class="nav-link" href="{{ route('buatserahterima') }}">
             <i class="fas fa-fw fa-table"></i>
             <span>Lakukan Serah Terima</span></a>
     </li>
     <!-- Nav Item - Add -->
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{ route('serahterima') }}">
             <i class="fas fa-fw fa-table"></i>
             <span>List Serah Terima</span></a>
     </li>

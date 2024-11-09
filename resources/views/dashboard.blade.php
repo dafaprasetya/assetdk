@@ -5,8 +5,6 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 </div>
 
 <!-- Content Row -->
@@ -86,4 +84,83 @@
     </div>
 </div>
 
+<div class="col-xl-12 col-lg-12">
+    <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div
+            class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">Asset Setiap Divisi</h6>
+            
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+            <div class="chart-pie pt-4 pb-2">
+                <canvas id="myPieChart"></canvas>
+            </div>
+            <div class="mt-4 text-center small">
+                @foreach ($kategori as $nama_kategori => $kategori_info)
+                    <span class="mr-2">
+                        <i class="fas fa-circle" style="color: {{ $kategori_info['warna'] }}"></i> {{ str_replace('_', ' ', $nama_kategori) }}
+                    </span>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{asset('vendor/vendor/chart.js/Chart.min.js')}}"></script>
+
+
+<script>
+    var ctx = document.getElementById("myPieChart");
+    var myPieChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: [
+                @foreach ($kategori as $nama_kategori => $kategori_info)
+                    "{{ str_replace('_', ' ', $nama_kategori) }}",
+                @endforeach
+            ],
+            datasets: [{
+                data: [
+                    @foreach ($kategori as $kategori_info)
+                        {{ $kategori_info['jumlah'] }},
+                    @endforeach
+                ],
+                backgroundColor: [
+                    @foreach ($kategori as $kategori_info)
+                        "{{ $kategori_info['warna'] }}",
+                    @endforeach
+                ],
+            }],
+            
+        },
+        options: {
+            maintainAspectRatio: false,
+            tooltips: {
+                backgroundColor: "rgb(255,255,255)",
+                bodyFontColor: "#858796",
+                borderColor: '#dddfeb',
+                borderWidth: 1,
+                xPadding: 15,
+                yPadding: 15,
+                displayColors: false,
+                caretPadding: 10,
+                callbacks: {
+                    label: function(tooltipItem, data) {
+                        // Mendapatkan nama divisi berdasarkan indeks tooltip
+                        var label = data.labels[tooltipItem.index];
+                        // Mendapatkan jumlah barang langsung dari data
+                        var jumlah = data.datasets[0].data[tooltipItem.index];
+                        return label + ': ' + jumlah + ' barang';
+                    }
+                },
+            },
+            legend: {
+                display: false
+            },
+            cutoutPercentage: 80,
+        },
+    });
+</script>
 @endsection

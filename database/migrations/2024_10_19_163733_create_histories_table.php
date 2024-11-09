@@ -17,11 +17,13 @@ class CreateHistoriesTable extends Migration
             $table->id();
             $table->char('dkasset');
             $table->foreign('dkasset')->references('dkasset')->on('barangs')->onDelete('cascade');
-            $table->integer('nik_pemilik');
-            $table->integer('nama_pemilik');
-            $table->integer('divisi_pemilik');
-            $table->enum('kondisi', ['baik', 'rusak']);
+            $table->string('pemegang');
+            $table->string('ttd_pemegang');
+            $table->string('divisi_pemegang')->nullable();
+            $table->string('kondisi');
             $table->string('deskripsi');
+            $table->string('foto');
+            $table->string('waktu');
             $table->timestamps();
         });
     }
