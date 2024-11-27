@@ -23,16 +23,21 @@ Route::get('/', function () {
 // Route assets/barang
 Route::middleware(['auth', 'asset'])->group(function () {
     Route::get('/asset',[AssetController::class, 'index'])->name('listasset');
+    Route::get('/asset/dkl',[AssetController::class, 'indexdkl'])->name('listassetdkl');
     Route::get('/asset/tambah/asset',[AssetController::class, 'tambahbarang'])->name('tambahasset');
     Route::get('/asset/edit/{dkasset}',[AssetController::class, 'edit'])->name('editasset');
     Route::post('/asset/edit/{dkasset}/p',[AssetController::class, 'editpost'])->name('editassetpost');
     Route::post('/asset/d/{dkasset}',[AssetController::class, 'hapus'])->name('hapusasset');
     Route::post('/asset/tambah/asset/upload',[AssetController::class, 'tambahbarangpost'])->name('tambahassetpost');
     Route::get('/asset/cetak/all',[AssetController::class, 'cetaksemua'])->name('cetak');
+    Route::get('/asset/cetak/dkl',[AssetController::class, 'cetakdkl'])->name('cetakdkl');
     Route::get('/asset/serahterima',[STController::class, 'index'])->name('serahterima');
     Route::get('/asset/serahterima/buat',[STController::class, 'buatserahterima'])->name('buatserahterima');
     Route::post('/asset/serahterima/create',[STController::class, 'create'])->name('createserahterima');
-    Route::get('/asset/serahterima/show/{id}',[STController::class, 'show'])->name('showserahterima');
+    Route::post('/asset/serahterima/delete/{id}',[STController::class, 'delete'])->name('deleteserahterima');
+    Route::get('/asset/serahterima/edit/{id}',[STController::class, 'edit'])->name('editserahterima');
+    Route::post('/asset/serahterima/edit/go/{id}',[STController::class, 'editpost'])->name('editpostserahterima');
+    Route::post('/asset/update/harga/{id}',[AssetController::class, 'hitungPenyusutan'])->name('updateharga');
 });
 Route::middleware(['auth','IT'])->group(function () {
     // USER
@@ -56,6 +61,8 @@ Route::middleware(['auth','IT'])->group(function () {
     Route::post('/IT/divisi/buat',[ITController::class, 'buatdivisi'])->name('buatdivisi');
 });
 Route::get('/asset/{dkasset}',[AssetController::class, 'show'])->name('detailasset');
+Route::get('/asset/serahterima/show/{id}',[STController::class, 'show'])->name('showserahterima');
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard/dkl', [App\Http\Controllers\HomeController::class, 'indexdkl'])->name('homedkl');

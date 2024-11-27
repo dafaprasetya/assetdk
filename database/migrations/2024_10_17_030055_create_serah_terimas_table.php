@@ -15,8 +15,8 @@ class CreateSerahTerimasTable extends Migration
     {
         Schema::create('serah_terimas', function (Blueprint $table) {
             $table->id();
+            // $table->string('jenis_asset');
             $table->char('dkasset');
-            $table->foreign('dkasset')->references('dkasset')->on('barangs')->onDelete('cascade');
             $table->string('nama_penerima');
             $table->string('divisi_penerima')->nullable();
             $table->string('jabatan_penerima')->nullable();

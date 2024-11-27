@@ -17,12 +17,12 @@ class CreateBarangsTable extends Migration
             $table->char('dkasset')->primary();
             $table->string('nama_asset');
             $table->string('merk')->nullable();
-            $table->unsignedBigInteger('kategoriId')->nullable();
+            $table->unsignedBigInteger('kategoriId')->default(1)->nullable();
             $table->foreign('kategoriId')->references('id')->on('kategoris')->onDelete('cascade')->nullable();
-            $table->string('user')->nullable()->default('Team asset');
-            $table->unsignedBigInteger('jabatanId')->nullable();
+            $table->string('user')->nullable();
+            $table->unsignedBigInteger('jabatanId')->default(1)->nullable();
             $table->foreign('jabatanId')->references('id')->on('jabatans')->onDelete('cascade')->nullable();
-            $table->unsignedBigInteger('divisiId')->nullable();
+            $table->unsignedBigInteger('divisiId')->default(1)->nullable();
             $table->foreign('divisiId')->references('id')->on('divisis')->onDelete('cascade')->nullable();
             $table->string('area')->nullable()->default('Asset');
             $table->string('lokasi')->nullable()->default('Taman Sari Persada');
@@ -31,7 +31,7 @@ class CreateBarangsTable extends Migration
             $table->integer('QTY')->nullable();
             $table->string('foto')->nullable();
             $table->string('asset_validasi')->nullable();
-            $table->string('tanggal')->nullable();
+            $table->date('tanggal')->nullable();
             $table->string('signature')->nullable();
             $table->string('foto_tanda_terima')->nullable();
             $table->string('keterangan_asset')->nullable();

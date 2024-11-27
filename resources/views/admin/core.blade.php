@@ -187,6 +187,9 @@
         $(document).ready(function() {
             $('#dkasset').select2();
         });
+        $(document).ready(function() {
+            $('#dkassetdkl').select2();
+        });
     </script>
     <!-- Core plugin JavaScript-->
     <script src="{{asset('vendor/vendor/jquery-easing/jquery.easing.min.js')}}"></script>

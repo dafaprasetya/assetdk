@@ -9,7 +9,8 @@ class History extends Model
 {
     use HasFactory;
 
-    public function barang() {
-        return $this->belongsTo(Barang::class, 'dkasset');
+    public function barang()
+    {
+        return $this->morphTo();
     }
 }

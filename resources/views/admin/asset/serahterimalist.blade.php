@@ -36,7 +36,37 @@
                     <td>{{ $st->divisi_penerima }}</td>
                     <td>{{ $st->nama_penyerah }}</td>
                     <td>{{ $st->divisi_penyerah}}</td>
-                    <td><a href="{{ route('showserahterima', $st->id) }}" class="btn btn-primary">Lihat</a></td>
+                    <td>
+                        <a href="{{ route('showserahterima', $st->id) }}" class="btn btn-sm btn-primary">Lihat</a>
+                        <a class="btn btn-sm btn-danger" href="#" data-toggle="modal" data-target="{{ '#'.$st->dkasset }}">Hapus</a>
+                        <a class="btn btn-sm btn-warning" href="{{ route('editserahterima', $st->id) }}">Edit</a>
+                    </td>
+                    <div class="modal fade" id="{{ $st->dkasset }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Yakin ingin menghapus item ini?</h5>
+                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">Apakah anda ingin menghapus ni?</div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        
+                                        <a class="btn btn-primary" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                            document.getElementById('hapusform').submit();">
+                                            {{ __('Hapus') }}
+                                        </a>
+                                        <form id="hapusform" action="{{ route('deleteserahterima', $st->id) }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                 </tr>
                 @endforeach

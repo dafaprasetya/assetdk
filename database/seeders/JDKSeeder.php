@@ -26,7 +26,8 @@ class JDKSeeder extends Seeder
             'Infrastuktur - Elektronik',
             'Alat Kantor - Elektronik',
             'Alat Teknisi',
-            'alat Vakum+Sealer+Plastik Vakum'
+            'alat Vakum+Sealer+Plastik Vakum',
+            'alat Security',
         ];
 
         // Looping array dan insert setiap nilai ke database
@@ -76,7 +77,11 @@ class JDKSeeder extends Seeder
             'Head Unit',
             'Asset',
             'Admin',
-            'Kemitraan'
+            'Kemitraan',
+            'Pengembangan (R&D)',
+            'Pengembangan (BUSDEV)',
+            'Marketing (Event&Promosi)',
+            'Regional Sumatera',
         ];
 
         // Looping array dan insert setiap nilai ke database

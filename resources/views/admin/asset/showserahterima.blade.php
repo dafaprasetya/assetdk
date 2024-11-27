@@ -84,6 +84,17 @@
             text-align: center;
             margin-top: 20px;
         }
+        @media print {
+            body {
+                margin: 0;
+            }
+            img {
+                page-break-inside: avoid;
+            }
+            button{
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -111,6 +122,11 @@
                     <td>{{ $asset->tempat }}, {{ $asset->waktu }}</td>
                 </tr>
                 <tr>
+                    <td>Nama Barang</td>
+                    <td>:</td>
+                    <td>{{ $barang->nama_asset }}</td>
+                </tr>
+                <tr>
                     <td>Keterangan</td>
                     <td>:</td>
                     <td>{{ $asset->deskripsi }}</td>
@@ -130,5 +146,6 @@
         </div>
         <div class="note">Tidak berlaku sebagai tanda terima yang sah / cash / giro / cek</div>
     </div>
+    <button onclick="window.print()">Print</button>
 </body>
 </html>

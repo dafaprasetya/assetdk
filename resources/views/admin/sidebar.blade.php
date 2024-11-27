@@ -10,23 +10,13 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item {{ Route::is('home') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('home') }}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-    </li>
-
     <!-- Divider -->
     <hr class="sidebar-divider">
-    @if (Auth::user()->divisi === 'Asset')
-        @include('admin.asset.sidebar')
-        @endif
-    @if (Auth::user()->divisi === 'IT')
     @include('admin.asset.sidebar')
-    <hr class="sidebar-divider d-none d-md-block">
-        
-    @include('admin.IT.sidebar')
+    @if (Auth::user()->divisi === 'IT')
+        <hr class="sidebar-divider d-none d-md-block">
+            
+        @include('admin.IT.sidebar')
     @endif
     <!-- Divider -->
     <!-- Sidebar Toggler (Sidebar) -->

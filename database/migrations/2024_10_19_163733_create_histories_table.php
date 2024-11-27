@@ -16,7 +16,6 @@ class CreateHistoriesTable extends Migration
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
             $table->char('dkasset');
-            $table->foreign('dkasset')->references('dkasset')->on('barangs')->onDelete('cascade');
             $table->string('pemegang');
             $table->string('ttd_pemegang');
             $table->string('divisi_pemegang')->nullable();

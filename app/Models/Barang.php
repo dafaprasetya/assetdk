@@ -11,6 +11,7 @@ class Barang extends Model
     use HasFactory;
 
     protected $fillable = [
+        "jenis_asset",
         "dkasset",
         "nama_asset",
         "merk",
@@ -52,6 +53,14 @@ class Barang extends Model
         return $this->belongsTo(Divisi::class, 'divisiId');
     }
     public function history() {
-        return $this->hasMany(History::class, 'dkasset');
+        return $this->morphMany(SerahTerima::class, 'dkasset');
+    }
+    public function serahTerima()
+    {
+        return $this->morphMany(SerahTerima::class, 'dkasset');
+    }
+    public function penyusutanBarang()
+    {
+        return $this->morphOne(PenyusutanBarang::class, 'dkasset');
     }
 }

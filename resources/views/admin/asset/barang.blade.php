@@ -15,11 +15,23 @@
                     </div>
                     <div class="col-md-6">
                         <div class="d-flex flex-row-reverse bd-highlight">
+                            @if (Route::is('listasset'))
+                                
                             @if ($search)
                             <a class="btn-sm btn-danger ml-2" target="blank" href="{{ route('cetak') }}">cetak semua</a>
                             <a class="btn-sm btn-primary" target="blank" href="{{ route('cetak') }}?search={{ $search }}">cetak hasil dari pencarian {{ $search }}</a>            
                             @else
                             <a class="btn-sm btn-danger" target="blank" href="{{ route('cetak') }}">cetak semua</a>
+                            @endif
+                            @endif
+                            @if (Route::is('listassetdkl'))
+                                
+                            @if ($search)
+                            <a class="btn-sm btn-danger ml-2" target="blank" href="{{ route('cetakdkl') }}">cetak semua</a>
+                            <a class="btn-sm btn-primary" target="blank" href="{{ route('cetakdkl') }}?search={{ $search }}">cetak hasil dari pencarian {{ $search }}</a>            
+                            @else
+                            <a class="btn-sm btn-danger" target="blank" href="{{ route('cetakdkl') }}">cetak semua</a>
+                            @endif
                             @endif
                         </div>
                     </div>

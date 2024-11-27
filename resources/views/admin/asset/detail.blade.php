@@ -182,7 +182,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Signature</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">QRCODE</h5>
                                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
@@ -220,7 +220,7 @@
                             {{-- {{ $asset->history }} --}}
                             <div class="container">
 
-                                @foreach ($asset->history as $history)
+                                @foreach ($history as $history)
                                     <div class="row">
                                         <div class="col-md-12" style="font-weight: 700">{{ $history->waktu }}</div>
                                         <div class="col-md-12">
@@ -252,8 +252,59 @@
                     </div>
                 </div>
             </div>
-            
         </div>
+        @if (session()->has('gaketemu'))
+        <h1>gaketemu bos</h1>
+        @endif
+        @if (session()->has('error'))
+        {{ session()->get('error') }}
+        @endif
+        @if (session()->has('success'))
+        {{ session()->get('success') }}
+        @endif
+        
+        <div class="row">
+            <div class="col-md-12 mb-4">
+                
+                <table>
+                    <tr>
+                        <td>Tanggal Pembelian : </td>
+                         
+                        <td>{{ $penyusutan->tanggal_pembelian ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Harga Awal : </td>
+                         
+                        <td>{{ number_format($penyusutan->harga_awal ?? 0, 0, ',', '.') }}</td>
+                    </tr>
+                    <tr>
+                        <td>Harga Penyusutan Perhari : </td>
+                         
+                        <td>{{ number_format($penyusutan->harga_penyusutan_perhari ?? 0, 0, ',', '.') }}</td>
+                    </tr>
+                    <tr>
+                        <td>Harga total Penyusutan :</td>
+                         
+                        <td>{{ number_format($penyusutan->harga_penyusutan ?? 0, 0, ',', '.') }}</td>
+                    </tr>
+                </table>
+                <br>
+                @if (Auth::user())
+                <form action="{{ route('updateharga', $penyusutan->dkasset ?? '') }}" method="post" {{ $penyusutan ?? 'hidden' }}>
+                    @csrf
+                    <button type="submit" class="'btn btn-sm btn-warning text-dark" href="">update harga</button>
+                </form>
+                @endif
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+        
         
     </div>
 
