@@ -27,7 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $listbarang = Barang::where('jenis_asset', 'DKASSET')->orWhere('jenis_asset',null);
+        $listbarang = Barang::all();
         $totalasset = $listbarang->count();
         $totalassetbaik = Barang::where('kondisi', 'Baik')->count();
         $totalassetrusak = Barang::where('kondisi', 'Rusak')->count();
@@ -78,13 +78,8 @@ class HomeController extends Controller
             $kategoriData = [];  // Membuat array kosong untuk menampung data divisi
             $kat = Kategori::all();
             foreach ($kat as $kate) {
-                // $nama_divisi = str_replace([" ", "&"], ["_", "dan"], $divi->nama);  // Ganti spasi dan "&"
-                // // Menyimpan jumlah barang berdasarkan divisi dengan nama divisi sebagai kunci
-                // $warna_hex = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
-                // $divisiData[$nama_divisi] = Barang::where('divisiId', $divi->id)->count();
-                // // Menambahkan warna hex acak
                 $nama_divisi = str_replace([" ", "&"], ["_", "dan"], $kate->nama);
-                $jumlah_kategori = Barang::where('kategoriId', $kate->id)->count();
+                $jumlah_kategori = Barangdkl::where('kategoriId', $kate->id)->count();
 
                 // Menambahkan warna hex acak
                 $warna_hex = sprintf('#%06X', mt_rand(0, 0xFFFFFF));

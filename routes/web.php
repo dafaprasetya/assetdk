@@ -64,5 +64,5 @@ Route::get('/asset/{dkasset}',[AssetController::class, 'show'])->name('detailass
 Route::get('/asset/serahterima/show/{id}',[STController::class, 'show'])->name('showserahterima');
 Auth::routes();
 
-Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/dashboard/dkl', [App\Http\Controllers\HomeController::class, 'indexdkl'])->name('homedkl');

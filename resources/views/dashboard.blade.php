@@ -41,7 +41,9 @@
                             <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="{{ route('listasset') }}?search=Baik">{{ $totalassetbaik }}</a></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-box-seam-fill" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.01-.003.268-.108a.75.75 0 0 1 .558 0l.269.108.01.003zM10.404 2 4.25 4.461 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339L8 5.961 5.596 5l6.154-2.461z"/>
+                              </svg>
                         </div>
                     </div>
                 </div>
@@ -61,7 +63,9 @@
                             <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="{{ route('listasset') }}?search=rusak">{{ $totalassetrusak }}</a></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-layout-wtf" viewBox="0 0 16 16">
+                                <path d="M5 1v8H1V1zM1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1zm13 2v5H9V2zM9 1a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM5 13v2H3v-2zm-2-1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1zm12-1v2H9v-2zm-6-1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1z"/>
+                              </svg>
                         </div>
                     </div>
                 </div>
@@ -78,7 +82,9 @@
                             <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="{{ route('listasset') }}?search=Maintenance">{{ $totalassetperbaikan }}</a></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-tools" viewBox="0 0 16 16">
+                                <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3q0-.405-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708M3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"/>
+                              </svg>
                         </div>
                     </div>
                 </div>
@@ -101,9 +107,9 @@
                 </div>
                 <div class="mt-4 text-center small">
                     @foreach ($kategori as $nama_kategori => $kategori_info)
-                        <span class="mr-2">
-                            <i class="fas fa-circle" style="color: {{ $kategori_info['warna'] }}"></i> {{ str_replace('_', ' ', $nama_kategori) }}
-                        </span>
+                    <span class="mr-2">
+                        <i class="fas fa-circle" style="color: {{ $kategori_info['warna'] }}"></i> {{ str_replace('_', ' ', $nama_kategori) }} :{{ $kategori_info['jumlah'] }} Barang
+                    </span>
                     @endforeach
                 </div>
             </div>
@@ -207,7 +213,9 @@
                             <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="{{ route('listasset') }}?search=Baik">{{ $totalassetbaik }}</a></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-box-seam-fill" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.01-.003.268-.108a.75.75 0 0 1 .558 0l.269.108.01.003zM10.404 2 4.25 4.461 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339L8 5.961 5.596 5l6.154-2.461z"/>
+                              </svg>
                         </div>
                     </div>
                 </div>
@@ -227,7 +235,9 @@
                             <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="{{ route('listasset') }}?search=rusak">{{ $totalassetrusak }}</a></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-layout-wtf" viewBox="0 0 16 16">
+                                <path d="M5 1v8H1V1zM1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1zm13 2v5H9V2zM9 1a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM5 13v2H3v-2zm-2-1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1zm12-1v2H9v-2zm-6-1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1z"/>
+                              </svg>
                         </div>
                     </div>
                 </div>
@@ -243,13 +253,92 @@
                                 Asset Lancar dalam perbaikan</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="{{ route('listasset') }}?search=Maintenance">{{ $totalassetperbaikan }}</a></div>
                         </div>
-                        <div class="col-auto">
-                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-tools" viewBox="0 0 16 16">
+                            <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3q0-.405-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708M3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"/>
+                          </svg>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="col-xl-12 col-lg-12">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div
+                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Asset Lancar Setiap Kategori</h6>
+                
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <div class="chart-pie pt-4 pb-2">
+                    <canvas id="myPieChart"></canvas>
+                </div>
+                <div class="mt-4 text-center small">
+                    @foreach ($kategori as $nama_kategori => $kategori_info)
+                    <span class="mr-2">
+                        <i class="fas fa-circle" style="color: {{ $kategori_info['warna'] }}"></i> {{ str_replace('_', ' ', $nama_kategori) }} :{{ $kategori_info['jumlah'] }} Barang
+                    </span>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{asset('vendor/vendor/chart.js/Chart.min.js')}}"></script>
+
+
+    <script>
+        var ctx = document.getElementById("myPieChart");
+        var myPieChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    @foreach ($kategori as $nama_kategori => $kategori_info)
+                        "{{ str_replace('_', ' ', $nama_kategori) }}",
+                    @endforeach
+                ],
+                datasets: [{
+                    data: [
+                        @foreach ($kategori as $kategori_info)
+                            {{ $kategori_info['jumlah'] }},
+                        @endforeach
+                    ],
+                    backgroundColor: [
+                        @foreach ($kategori as $kategori_info)
+                            "{{ $kategori_info['warna'] }}",
+                        @endforeach
+                    ],
+                }],
+                
+            },
+            options: {
+                maintainAspectRatio: false,
+                tooltips: {
+                    backgroundColor: "rgb(255,255,255)",
+                    bodyFontColor: "#858796",
+                    borderColor: '#dddfeb',
+                    borderWidth: 1,
+                    xPadding: 15,
+                    yPadding: 15,
+                    displayColors: false,
+                    caretPadding: 10,
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            // Mendapatkan nama divisi berdasarkan indeks tooltip
+                            var label = data.labels[tooltipItem.index];
+                            // Mendapatkan jumlah barang langsung dari data
+                            var jumlah = data.datasets[0].data[tooltipItem.index];
+                            return label + ': ' + jumlah + ' barang';
+                        }
+                    },
+                },
+                legend: {
+                    display: false
+                },
+                cutoutPercentage: 80,
+            },
+        });
+    </script>
 @endif
 @endsection

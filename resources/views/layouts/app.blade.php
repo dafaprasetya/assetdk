@@ -9,6 +9,7 @@
 
     <title>DKASSET</title>
 
+    <link rel="icon" href="{{ asset('logo/dkriuk.jpg') }}" type="image">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 

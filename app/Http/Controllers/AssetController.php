@@ -152,6 +152,10 @@ class AssetController extends Controller
         $data = [
             'asset'=>$listbarang,
         ];
+        // foreach ($listbarang as $listbarang) {
+        //     # code...
+        //     dd($listbarang);
+        // }
         return view('admin.asset.cetak', $data);
     }
     public function cetakdkl(Request $request) {

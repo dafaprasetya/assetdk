@@ -40,11 +40,13 @@
 </head>
 <body>
     <h1>QR ASSET</h1>
+    {{-- total asset = {{ $asset->count() }} --}}
     <div class="qr-container">
         @foreach ($asset as $asset)
-            <div class="qr-code">
-                {!! QrCode::size(90)->generate(route('detailasset',$asset->dkasset)); !!}
-                <p>{{ $asset->dkasset }}</p>
+        <div class="qr-code">
+            {!! QrCode::size(90)->generate(route('detailasset',$asset->dkasset)); !!}
+            <p>{{ $asset->dkasset }}</p>
+            <p>{{ $asset->kondisi }}</p>
             </div>
         @endforeach
     </div>
