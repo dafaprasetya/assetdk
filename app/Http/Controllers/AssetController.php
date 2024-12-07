@@ -532,17 +532,17 @@ class AssetController extends Controller
         // ]);
     }
 
-    public function buatlaporanasset(Request $request){
+    public function buatlaporanassetlancar(Request $request){
         $report = $request->input('report');
         $bulan = Carbon::createFromFormat('Y-m', $report)->translatedFormat('F Y');
-        $assetrusak = Barang::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Rusak');
-        $assetbaik = Barang::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Baik');
-        $assetmaintenance = Barang::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Maintenance');
-        $assetstockbaik = Barang::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Baik Stock Asset');
-        $assetstockrusak = Barang::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Baik Stock Rusak');
-        $assetstockmaintenance = Barang::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Baik Stock Maintenance');
-        $assethilang = Barang::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Hilang');
-        $serahterima = SerahTerima::where('waktu', 'LIKE', "%{$report}%");
+        $assetrusak = Barangdkl::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Rusak');
+        $assetbaik = Barangdkl::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Baik');
+        $assetmaintenance = Barangdkl::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Maintenance');
+        $assetstockbaik = Barangdkl::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Baik Stock Asset');
+        $assetstockrusak = Barangdkl::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Baik Stock Rusak');
+        $assetstockmaintenance = Barangdkl::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Baik Stock Maintenance');
+        $assethilang = Barangdkl::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Hilang');
+        $serahterima = SerahTerima::where('waktu', 'LIKE', "%{$report}%")->where('jenis_asset', 'DKL');
         $data = [
             'bulan' => $bulan,
             'assetrusak' => $assetrusak,
@@ -553,6 +553,32 @@ class AssetController extends Controller
             'assetstockbaik' => $assetstockbaik,
             'assethilang' => $assethilang,
             'serahterima' => $serahterima,
+            'nama' => 'Asset Lancar(DKL)',
+        ];
+        return view('admin.asset.laporan', $data);
+    }
+    public function buatlaporanasset(Request $request){
+        $report = $request->input('report');
+        $bulan = Carbon::createFromFormat('Y-m', $report)->translatedFormat('F Y');
+        $assetrusak = Barang::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Rusak');
+        $assetbaik = Barang::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Baik');
+        $assetmaintenance = Barang::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Maintenance');
+        $assetstockbaik = Barang::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Baik Stock Asset');
+        $assetstockrusak = Barang::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Baik Stock Rusak');
+        $assetstockmaintenance = Barang::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Baik Stock Maintenance');
+        $assethilang = Barang::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Hilang');
+        $serahterima = SerahTerima::where('waktu', 'LIKE', "%{$report}%")->where('jenis_asset', 'DKASSET');
+        $data = [
+            'bulan' => $bulan,
+            'assetrusak' => $assetrusak,
+            'assetmaintenance' => $assetmaintenance,
+            'assetbaik' => $assetbaik,
+            'assetstockrusak' => $assetstockrusak,
+            'assetstockmaintenance' => $assetstockmaintenance,
+            'assetstockbaik' => $assetstockbaik,
+            'assethilang' => $assethilang,
+            'serahterima' => $serahterima,
+            'nama' => 'Asset',
         ];
         return view('admin.asset.laporan', $data);
     }

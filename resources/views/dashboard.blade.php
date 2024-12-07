@@ -9,11 +9,11 @@
         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <form
-                class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="{{ route('buatlaporan') }}">
+                class="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="{{ route('buatlaporan') }}">
                 <div class="input-group">
                     <input type="date" class="form-control bg-light border-0 small" placeholder="report" aria-label="report" aria-describedby="basic-addon2" id="datee" name="">
                     <input type="text" class="form-control bg-light border-0 small" placeholder="report" aria-label="report" aria-describedby="basic-addon2" id="report" name="report" hidden>
-                    <button type="submit" id="generate-report"  class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                    <button type="submit" id="generate-report"  class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                         <i class="fas fa-download fa-sm text-white-50"></i>
                         Buat Report</button>
                 </div>
@@ -206,6 +206,33 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Dashboard Asset Lancar (DKL)</h1>
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <form
+                class="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="{{ route('buatlaporandkl') }}">
+                <div class="input-group">
+                    <input type="date" class="form-control bg-light border-0 small" placeholder="report" aria-label="report" aria-describedby="basic-addon2" id="datee" name="">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="report" aria-label="report" aria-describedby="basic-addon2" id="report" name="report" hidden>
+                    <button type="submit" id="generate-report"  class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                        <i class="fas fa-download fa-sm text-white-50"></i>
+                        Buat Report</button>
+                </div>
+                <script>
+                    document.getElementById('generate-report').addEventListener('click', function (e) {
+                        const dateInput = document.getElementById('datee').value;
+                
+                        // Cek apakah pengguna telah memilih tanggal
+                        if (dateInput) {
+                            // Ekstraksi tahun dan bulan dari input
+                            const [year, month] = dateInput.split('-');
+                            document.getElementById('report').value = `${year}-${month}`
+                        } else {
+                            e.preventDefault()
+                            alert('Masukan Bulan Terlebih Dahulu');
+                        }
+                    });
+                </script>
+            </form>
+        </div>
     </div>
 
     <!-- Content Row -->

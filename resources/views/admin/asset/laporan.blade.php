@@ -15,42 +15,42 @@
         <div class="row">
             <div class="col-md-12">
 
-                <h3 class="mb-4">Report asset bulan {{ $bulan }}</h3>
+                <h3 class="mb-4">Report {{ $nama }} bulan {{ $bulan }}</h3>
                 <table id="assetreport" class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>Status Asset</th>
+                            <th>Status {{ $nama }}</th>
                             <th>Total</th>
                         </tr>
                     </thead>
                     <tbody>
         
                         <tr>
-                            <td>Asset kondisi baik</td>
+                            <td>{{ $nama }} kondisi baik</td>
                             <td class="total">{{ $assetbaik->count() }}</td>
                         </tr>
                         <tr>
-                            <td>Asset kondisi rusak</td>
+                            <td>{{ $nama }} kondisi rusak</td>
                             <td class="total">{{ $assetrusak->count() }}</td>
                         </tr>
                         <tr>
-                            <td>Asset kondisi Maintenance</td>
+                            <td>{{ $nama }} kondisi Maintenance</td>
                             <td class="total">{{ $assetmaintenance->count() }}</td>
                         </tr>
                         <tr>
-                            <td>Asset Stock kondisi Baik</td>
+                            <td>{{ $nama }} Stock kondisi Baik</td>
                             <td class="total">{{ $assetstockbaik->count() }}</td>
                         </tr>
                         <tr>
-                            <td>Asset Stock kondisi Rusak</td>
+                            <td>{{ $nama }} Stock kondisi Rusak</td>
                             <td class="total">{{ $assetstockrusak->count() }}</td>
                         </tr>
                         <tr>
-                            <td>Asset Stock kondisi Maintenance</td>
+                            <td>{{ $nama }} Stock kondisi Maintenance</td>
                             <td class="total">{{ $assetstockmaintenance->count() }}</td>
                         </tr>
                         <tr>
-                            <td>Asset Hilang</td>
+                            <td>{{ $nama }} Hilang</td>
                             <td class="total">{{ $assethilang->count() }}</td>
                         </tr>
                     </tbody>
@@ -58,7 +58,7 @@
             </div>
             <div class="col-md-12">
 
-                <h3>Report serah terima bulan {{ $bulan }}</h3>
+                <h3>Report serah terima {{ $nama }} bulan {{ $bulan }}</h3>
                 <table class="table" id="serahterimareport">
                     <thead>
                         <tr>
