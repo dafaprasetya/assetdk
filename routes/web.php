@@ -23,6 +23,7 @@ Route::get('/', function () {
 // Route assets/barang
 Route::middleware(['auth', 'asset'])->group(function () {
     Route::get('/asset',[AssetController::class, 'index'])->name('listasset');
+    Route::get('/asset/laporan',[AssetController::class, 'buatlaporanasset'])->name('buatlaporan');
     Route::get('/asset/dkl',[AssetController::class, 'indexdkl'])->name('listassetdkl');
     Route::get('/asset/tambah/asset',[AssetController::class, 'tambahbarang'])->name('tambahasset');
     Route::get('/asset/edit/{dkasset}',[AssetController::class, 'edit'])->name('editasset');

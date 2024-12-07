@@ -235,29 +235,7 @@
                     <label for="signature">Signature (required maks. 2mb)</label>
                     @include('admin.ttd')
                     {{-- <small><a href="#" data-toggle="modal" data-target="#tutorial">klik disini untuk melihat cara membuat tanda tangan online</a></small> --}}
-                    <div class="modal fade" id="tutorial" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Tutorial tanda tangan online</h5>
-                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <ul>
-                                        <li>pergi ke <a target="blank" href="https://www.signwell.com/online-signature/draw/">https://www.signwell.com/online-signature/draw/</a></li>
-                                        <li>gambar tanda tangan</li>
-                                        <li>save dan download (transparent mode on)</li>
-                                        <li>upload ke database</li>
-                                    </ul>
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Tutup</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
 
                 <div class="form-group">

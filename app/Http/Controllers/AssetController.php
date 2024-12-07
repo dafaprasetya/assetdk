@@ -7,6 +7,7 @@ use App\Models\Barangdkl;
 use App\Models\Kategori;
 use App\Models\PenyusutanBarang;
 use App\Models\Jabatan; 
+use App\Models\SerahTerima; 
 use App\Models\Divisi;
 use App\Models\History;
 use Illuminate\Http\Request;
@@ -529,6 +530,31 @@ class AssetController extends Controller
         //     'nilai_saat_ini' => round($nilaiSaatIni, 2),
         //     'tanggal_pembelian' => $tanggalPembelian->toDateString(),
         // ]);
+    }
+
+    public function buatlaporanasset(Request $request){
+        $report = $request->input('report');
+        $bulan = Carbon::createFromFormat('Y-m', $report)->translatedFormat('F Y');
+        $assetrusak = Barang::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Rusak');
+        $assetbaik = Barang::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Baik');
+        $assetmaintenance = Barang::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Maintenance');
+        $assetstockbaik = Barang::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Baik Stock Asset');
+        $assetstockrusak = Barang::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Baik Stock Rusak');
+        $assetstockmaintenance = Barang::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Baik Stock Maintenance');
+        $assethilang = Barang::where('tanggal', 'LIKE', "%{$report}%")->where('kondisi','Hilang');
+        $serahterima = SerahTerima::where('waktu', 'LIKE', "%{$report}%");
+        $data = [
+            'bulan' => $bulan,
+            'assetrusak' => $assetrusak,
+            'assetmaintenance' => $assetmaintenance,
+            'assetbaik' => $assetbaik,
+            'assetstockrusak' => $assetstockrusak,
+            'assetstockmaintenance' => $assetstockmaintenance,
+            'assetstockbaik' => $assetstockbaik,
+            'assethilang' => $assethilang,
+            'serahterima' => $serahterima,
+        ];
+        return view('admin.asset.laporan', $data);
     }
 
 
