@@ -7,56 +7,68 @@
         margin: auto; /* Pusatkan di tengah */
         position: relative;
     }
+
     #signature-pad {
-        border: 2px solid #000;
-        width: 400px;
-        height: 200px;
-        cursor: crosshair;
+        width: 100%; /* Lebar penuh */
+        height: 100%; /* Tinggi penuh */
+        display: block; /* Menghapus ruang kosong default canvas */
     }
 
-
-    button {
+    .buttons {
         margin-top: 10px;
+        text-align: center;
+    }
+
+    .buttons a {
+        margin: 5px;
     }
 </style>
-<div class="signature-container">
+
+<div id="signature-container">
     <canvas id="signature-pad"></canvas>
 </div>
-<div>
+<div class="buttons">
     <a class="btn btn-sm btn-danger" onclick="clearPad()">Bersihkan Tanda Tangan</a>
     <a class="btn btn-sm btn-primary" onclick="saveSignature()">Simpan Tanda Tangan</a>
 </div>
 
-@if (Route::is('editasset'))
-    <br>
-    <input id='ttd' type="file" name="signature" class="form-control" value="{{ $asset->signature }}">
-    <img src="{{ asset('storage/signature_asset/'.$asset->signature) }}" width="200px" alt="" srcset="">
-    <br>
-@endif
-@if (Route::is('tambahasset'))
-    <br>
-    <input id="ttd" type="file" name="signature" class="form-control">
-    <small>jika sudah disimpan upload kesini</small>
-@endif
-
 <script>
     const canvas = document.getElementById("signature-pad");
+    const container = document.getElementById("signature-container");
     const ctx = canvas.getContext("2d");
     let isDrawing = false;
 
-    // Atur ukuran kanvas
-    canvas.width = 400;
-    canvas.height = 200;
+    // Fungsi untuk menyesuaikan ukuran kanvas
+    function resizeCanvas() {
+        const rect = container.getBoundingClientRect();
+        const tempCanvas = document.createElement("canvas");
 
-    // Menangani event mouse
+        // Salin gambar saat ini sebelum mengubah ukuran
+        tempCanvas.width = canvas.width;
+        tempCanvas.height = canvas.height;
+        tempCanvas.getContext("2d").drawImage(canvas, 0, 0);
+
+        // Atur ulang ukuran kanvas
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+
+        // Salin kembali gambar ke kanvas yang telah disesuaikan
+        ctx.drawImage(tempCanvas, 0, 0, tempCanvas.width, tempCanvas.height, 0, 0, canvas.width, canvas.height);
+    }
+
+    // Panggil resize saat halaman dimuat dan saat jendela diubah ukurannya
+    window.addEventListener("load", resizeCanvas);
+    window.addEventListener("resize", resizeCanvas);
+
+    // Event menggambar menggunakan mouse
     canvas.addEventListener("mousedown", startDrawing);
     canvas.addEventListener("mousemove", draw);
     canvas.addEventListener("mouseup", stopDrawing);
     canvas.addEventListener("mouseout", stopDrawing);
 
-    // Menangani event sentuhan (touch)
-    canvas.addEventListener("touchstart", startDrawingTouch);
-    canvas.addEventListener("touchmove", drawTouch);
+    // Event menggambar menggunakan sentuhan (touch)
+    canvas.addEventListener("touchstart", startDrawingTouch, { passive: false });
+    canvas.addEventListener("touchmove", drawTouch, { passive: false });
     canvas.addEventListener("touchend", stopDrawing);
 
     function startDrawing(event) {
@@ -72,27 +84,23 @@
     }
 
     function startDrawingTouch(event) {
+        event.preventDefault(); // Mencegah scroll layar
         isDrawing = true;
         ctx.beginPath();
-
-        // Ambil koordinat sentuhan pertama
         const rect = canvas.getBoundingClientRect();
         const touch = event.touches[0];
         const x = touch.clientX - rect.left;
         const y = touch.clientY - rect.top;
-
         ctx.moveTo(x, y);
     }
 
     function drawTouch(event) {
+        event.preventDefault(); // Mencegah scroll layar
         if (!isDrawing) return;
-
-        // Ambil koordinat sentuhan saat ini
         const rect = canvas.getBoundingClientRect();
         const touch = event.touches[0];
         const x = touch.clientX - rect.left;
         const y = touch.clientY - rect.top;
-
         ctx.lineTo(x, y);
         ctx.stroke();
     }
@@ -107,20 +115,7 @@
 
     function saveSignature() {
         const dataURL = canvas.toDataURL("image/png");
-
-        // Konversi ke Blob
-        canvas.toBlob((blob) => {
-            const file = new File([blob], "signature.png", { type: "image/png" });
-
-            // Gunakan DataTransfer untuk input file
-            const dataTransfer = new DataTransfer();
-            dataTransfer.items.add(file);
-
-            // Set file ke input file
-            const fileInput = document.getElementById('ttd');
-            fileInput.files = dataTransfer.files;
-
-            console.log("File berhasil diatur:", fileInput.files[0]);
-        });
+        console.log("Tanda tangan disimpan:", dataURL);
+        alert("Tanda tangan berhasil disimpan.");
     }
 </script>
