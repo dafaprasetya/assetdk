@@ -91,7 +91,9 @@
                 <div class="form-group">
                     <label for="signature">Tanda Tangan Penerima (maks. 2mb)</label>
                     <div>
-                        <canvas id="canvas1" width="400" height="200" style="border: 1px solid black;"></canvas>
+                        <div id="signature-container">
+                            <canvas id="canvas1" width="400" height="200" style="border: 1px solid black;"></canvas>
+                        </div>
                         <a class="btn btn-sm btn-danger" onclick="clearCanvas('canvas1')">Clear Tanda Tangan 1</a>
                         <a class="btn btn-sm btn-primary" onclick="saveSignature('canvas1', 'signaturePreview1','ttd_penerima')">Save Tanda Tangan 1</a>
                         <img id="signaturePreview1" style="max-width: 200px; max-height: 100px;" alt="Preview Tanda Tangan 1">
@@ -142,7 +144,9 @@
                 <div class="form-group">
                     <label for="signature">Tanda Tangan Penyerah (require, maks. 2mb)</label>
                     <div>
-                        <canvas id="canvas2" width="400" height="200" style="border: 1px solid black;"></canvas>
+                        <div id="signature-container">
+                            <canvas id="canvas2" width="400" height="200" style="border: 1px solid black;"></canvas>
+                        </div>
                         <a class="btn btn-sm btn-danger" onclick="clearCanvas('canvas2')">Clear Tanda Tangan 2</a>
                         <a class="btn btn-sm btn-primary" onclick="saveSignature('canvas2', 'signaturePreview2', 'ttd_penyerah')">Save Tanda Tangan 2</a>
                         <img id="signaturePreview2" style="max-width: 200px; max-height: 100px;" alt="Preview Tanda Tangan 1">
