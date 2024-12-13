@@ -152,7 +152,11 @@
                         <img id="signaturePreview2" style="max-width: 200px; max-height: 100px;" alt="Preview Tanda Tangan 1">
                     
                     </div>
+                    @if (Route::is('editserahterima'))
                     <input type="file" name="ttd_penyerah" id="ttd_penyerah" class="form-control" required>
+                    @else
+                    <input type="file" name="ttd_penyerah" id="ttd_penyerah" class="form-control" required>
+                    @endif
                     <small style="color: red">*jika sudah tanda tangan harap simpan dan upload</small>
                 </div>
             </div>
@@ -160,7 +164,13 @@
         </div>
         <div class="form-group">
             <label for="foto">Foto (required, maks. 2mb)</label>
+            @if (Route::is('editserahterima'))
+                
             <input type="file" name="foto" class="form-control" value="{{ old('foto') }}" required>
+            @else
+                
+            <input type="file" name="foto" class="form-control" value="{{ old('foto') }}" required>
+            @endif
             @if ($errors->has('foto'))
                 <span class="text-danger">{{ $errors->first('foto') }}</span>
             @endif
@@ -199,7 +209,11 @@
         </div>
         <div class="form-group">
             <label for="tanggal">Tanggal</label>
-            <input type="date" class="form-control" name="" id="" value="<?php echo date('Y-m-d'); ?>" disabled>
+            @if (Route::is('editserahterima'))
+            <input type="date" class="form-control" name="tanggalll" value='{{ $serahterima->waktu }}' id="">
+            @else
+            <input type="date" class="form-control" name="tanggalll" id="">
+            @endif
             <small style="color: red">tanggal diatur secara otomatis</small>
         </div>
         <div class="form-group">

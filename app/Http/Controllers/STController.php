@@ -54,6 +54,7 @@ class STController extends Controller
             "dkasset"=>"required",
             "nama_penyerah"=>'required',
             "jabatan_penyerah"=>'required',
+            "tanggalll"=>'required',
             "divisi_penyerah"=>'required',
             "ttd_penyerah"=>'required|file|image|mimes:jpeg,png,jpg|max:2048',
             "foto"=>'required|file|image|mimes:jpeg,png,jpg|max:2048',
@@ -72,6 +73,7 @@ class STController extends Controller
         $st->nama_penerima = $validatedData["nama_penerima"];
         $st->divisi_penerima = $validatedData["divisi_penerima"];
         $st->jabatan_penerima = $validatedData["jabatan_penerima"];
+        $st->waktu = $validatedData["tanggalll"];
         
         
         $ttd_penerima = $request->file('ttd_penerima');
@@ -155,7 +157,7 @@ class STController extends Controller
                 'kondisi' => $validatedData["kondisi"],
                 'foto' => $nama_file_foto,
                 'status' => $validatedData['deskripsi'],
-                'tanggal' => date('Y-m-d'),
+                'tanggal' => $validatedData['tanggalll'],
             ]);
             $editbarang->save();
         }
@@ -168,7 +170,7 @@ class STController extends Controller
                 'kondisi' => $validatedData["kondisi"],
                 'foto' => $nama_file_foto,
                 'status' => $validatedData['deskripsi'],
-                'tanggal' => date('d-m-Y'),
+                'tanggal' => $validatedData['tanggalll'],
             ]);
             $editbarang->save();
         }
@@ -223,6 +225,7 @@ class STController extends Controller
             'nama_penerima' => $request->nama_penerima,
             'jabatan_penerima' => $request->jabatan_penerima,
             'divisi_penerima' => $request->divisi_penerima,
+            'waktu' => $request->tanggalll,
         ]);
         // $st->dkasset = $validatedData["dkasset"];
         // $st->nama_penerima = $validatedData["nama_penerima"];
@@ -308,7 +311,7 @@ class STController extends Controller
             'kondisi' => $request->kondisi,
             'foto' => $nama_file_foto,
             'status' => $request->deskripsi,
-            'tanggal' => date('Y-m-d'),
+            'tanggal' => $request->tanggalll,
         ]);
         $editbarang->save();
         
