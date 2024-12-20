@@ -119,7 +119,7 @@
                 <tr>
                     <td>Tempat & Tanggal</td>
                     <td>:</td>
-                    <td>{{ $asset->tempat }}, {{ $asset->waktu }}</td>
+                    <td>{{ $asset->tempat }}, {{ Str::substr($asset->waktu, 0, 11)}}</td>
                 </tr>
                 <tr>
                     <td>Nama Barang</td>
