@@ -1,64 +1,56 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# DKASSET
 
-## About Laravel
+DKASSET adalah platform berbasis web yang dirancang untuk mempermudah tim aset dalam mengelola dan melacak aset-aset mereka. Dengan berbagai fitur canggih seperti pemindaian kode QR, monitoring aset, dan pembuatan laporan otomatis, DKASSET membantu meningkatkan efisiensi pengelolaan aset dan meminimalkan risiko kehilangan data.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Fitur Utama
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 1. **QR Code**
+- Memungkinkan setiap aset dapat dipindai untuk menampilkan informasi detail seperti lokasi, kondisi, dan riwayat pemeliharaan.
+![QR Code](https://i.postimg.cc/cL0rqbm4/image.png)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 2. **Penyusutan Aset**
+- Memantau harga dan kelayakan aset sejak pembelian hingga kondisi saat ini.
+![Penyusutan Aset](https://i.postimg.cc/h4mjXBZt/image.png)
 
-## Learning Laravel
+### 3. **UI yang Mudah Dimengerti**
+- Antarmuka pengguna yang dirancang agar memudahkan tim dalam menambah dan mengedit data aset.
+![UI Mudah Dimengerti](https://i.postimg.cc/ZKF5LLSk/image.png)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 4. **Monitoring Aset**
+- Menampilkan total aset berdasarkan kondisinya: baik, rusak, atau sedang dalam perbaikan.
+![Monitoring Aset](https://i.postimg.cc/KYdbbK2r/image.png)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 5. **Monitoring Aset Lancar**
+- Fokus pada aset lancar, memantau kondisi baik, rusak, atau dalam perbaikan.
+![Monitoring Aset Lancar](https://i.postimg.cc/rmxkw8y6/image.png)
 
-## Laravel Sponsors
+### 6. **Serah Terima Digital**
+- Membantu proses serah terima aset secara digital dengan form otomatis.
+![Serah Terima Digital](https://i.postimg.cc/vTyd1pD4/image.png)
+![Form Serah Terima](https://i.postimg.cc/PJMn1282/image.png)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### 7. **Laporan Otomatis**
+- Membuat laporan secara otomatis yang dapat diunduh dalam format Excel untuk kemudahan analisis dan dokumentasi.
+![Laporan Otomatis](https://i.postimg.cc/NG8thfPm/image.png)
 
-### Premium Partners
+## Cara Penggunaan
+1. **Pemindaian QR Code**:
+   - Akses detail aset dengan memindai QR Code yang terpasang di aset.
+2. **Tambah/Edit Data Aset**:
+   - Gunakan antarmuka untuk menambah atau memperbarui informasi aset.
+3. **Monitoring Aset**:
+   - Pantau aset yang rusak, baik, atau dalam perbaikan melalui dashboard.
+4. **Laporan**:
+   - Unduh laporan otomatis dalam format Excel untuk kebutuhan dokumentasi atau analisis lebih lanjut.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## Manfaat
+- **Efisiensi Proses**: Mempercepat pengecekan dan pengelolaan aset.
+- **Minim Risiko**: Mengurangi kemungkinan kehilangan data dengan sistem berbasis digital.
+- **Kemudahan Akses**: Informasi aset tersedia kapan saja melalui pemindaian QR Code.
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Terima kasih telah menggunakan DKASSET! 😊
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
