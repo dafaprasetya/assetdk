@@ -5,6 +5,7 @@ use App\Http\Controllers\ITController;
 use App\Http\Controllers\STController;
 use App\Http\Controllers\Api\LoginAPI;
 use App\Http\Controllers\Api\AssetAPI;
+use App\Http\Controllers\Api\BarcodeAPI;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -80,8 +81,13 @@ Route::post('/api/login', [LoginAPI::class, '__invoke'])->name('loginAPI');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::get('/api/getassetkondisi', [AssetAPI::class, 'getKondisi'])->name('getKondisiAssetAPI');
-Route::get('/api/getassetkondisidkl', [AssetAPI::class, 'getKondisiDKL'])->name('getKondisiAssetDKLAPI');
-Route::get('/api/getallasset', [AssetAPI::class, 'getAllAsset'])->name('getAllAsset');
-Route::get('/api/getallassetdkl', [AssetAPI::class, 'getAllAssetDKL'])->name('getAllAssetDKL');
+Route::get('/api/asset/{dkasset}', [AssetAPI::class, 'showAsset'])->name('showassetapi');
+Route::get('/api/asset/barcode/{dkasset}', [BarcodeAPI::class, 'getBarcode'])->name('getBarcodeAPI');
+Route::middleware('auth:api')->group(function () {
+    Route::get('/api/getassetkondisi', [AssetAPI::class, 'getKondisi'])->name('getKondisiAssetAPI');
+    Route::get('/api/getassetkondisidkl', [AssetAPI::class, 'getKondisiDKL'])->name('getKondisiAssetDKLAPI');
+    Route::get('/api/getallasset', [AssetAPI::class, 'getAllAsset'])->name('getAllAsset');
+    Route::get('/api/getallassetdkl', [AssetAPI::class, 'getAllAssetDKL'])->name('getAllAssetDKL');
+    Route::post('/api/insert/asset', [AssetAPI::class, 'insertAsset'])->name('insertassetAPI');
+    Route::post('/api/edit/asset/{asset}', [AssetAPI::class, 'editAsset'])->name('editassetAPI');
+});
