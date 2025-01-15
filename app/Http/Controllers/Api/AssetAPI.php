@@ -12,6 +12,8 @@ use App\Models\Kategori;
 use App\Models\History;
 use App\Models\PenyusutanBarang;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
+
 
 class AssetAPI extends Controller
 {
