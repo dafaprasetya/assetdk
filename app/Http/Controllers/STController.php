@@ -16,13 +16,22 @@ use Illuminate\Support\Facades\Storage;
 class STController extends Controller
 {
     public function index(Request $request) {
-        $st = SerahTerima::paginate(20);
         $search = $request->input('search');
-
-        $data = [
-            'st'=>$st,
-            'search'=>$search,
-        ];
+        if ($search) {
+            $st = SerahTerima::where('dkasset', 'LIKE', "%{$search}%")
+            ->orWhere('nama_penerima', 'LIKE', "%{$search}%")
+            ->orWhere('nama_penyerah', 'LIKE', "%{$search}%")->get();
+            $data = [
+                'st'=>$st,
+                'search'=>$search,
+            ];
+        }else{
+            $st = SerahTerima::paginate(20);
+            $data = [
+                'st'=>$st,
+                'search'=>$search,
+            ];
+        }
         return view('admin.asset.serahterimalist',$data);
     }
     public function buatserahterima() {
