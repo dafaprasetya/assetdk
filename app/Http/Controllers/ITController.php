@@ -12,10 +12,12 @@ use App\Models\User;
 class ITController extends Controller
 {
     // KATEGORIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
-    public function kategorilist() {
+    public function kategorilist(Request $request) {
+        $search = $request->input('search');
         $kategori = Kategori::all();
         $data = [
             'kategori' => $kategori,
+            'search'=>$search,
         ];
         return view('admin.IT.kategori',$data);
     }
@@ -58,10 +60,12 @@ class ITController extends Controller
         return redirect()->route('kategorilist')->with('success', $validateData['nama'].' berhasil ditambah');
     }
     // JABATANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-    public function jabatanlist() {
+    public function jabatanlist(Request $request) {
         $jabatan = Jabatan::all();
+        $search = $request->input('search');
         $data = [
             'jabatan' => $jabatan,
+            'search'=>$search,
         ];
         return view('admin.IT.jabatan',$data);
     }
@@ -104,10 +108,12 @@ class ITController extends Controller
         return redirect()->route('jabatanlist')->with('success', $validateData['nama'].' berhasil ditambah');
     }
     // DIVISIIII
-    public function divisilist() {
+    public function divisilist(Request $request) {
         $divisi = Divisi::all();
+        $search = $request->input('search');
         $data = [
             'divisi' => $divisi,
+            'search'=>$search,
         ];
         return view('admin.IT.divisi',$data);
     }
@@ -150,13 +156,15 @@ class ITController extends Controller
         return redirect()->route('divisilist')->with('success', $validateData['nama'].' berhasil ditambah');
     }
     # USERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
-    public function userlist() {
+    public function userlist(Request $request) {
         $user = User::all();
         $divisi = Divisi::all();
+        $search = $request->input('search');
 
         $data = [
             'user' => $user,
             'divisi' => $divisi,
+            'search'=>$search,
         ];
         return view('admin.IT.user',$data);
     }

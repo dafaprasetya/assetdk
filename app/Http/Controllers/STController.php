@@ -34,9 +34,10 @@ class STController extends Controller
         }
         return view('admin.asset.serahterimalist',$data);
     }
-    public function buatserahterima() {
+    public function buatserahterima(Request $request) {
         $kategori = Kategori::all();
         $jabatan = Jabatan::all();
+        $search = $request->input('search');
         $divisi = Divisi::all();
         $asset = Barang::all();
         $assetdkl = Barangdkl::all();
@@ -49,6 +50,8 @@ class STController extends Controller
             'assetdkl'=>$assetdkl,
             'jabatan'=>$jabatan,
             'jabatan_penyerah' => $jabatan, 
+            'search'=>$search,
+
         ];
         return view('admin.asset.serahterimacreate', $data);
     }

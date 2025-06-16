@@ -87,8 +87,9 @@ class AssetController extends Controller
         return view('admin.asset.barang', $data);
     }
     
-    public function tambahbarang() {
+    public function tambahbarang(Request $request) {
         $kategori = Kategori::all();
+        $search = $request->input('search');
         $jabatan = Jabatan::all();
         $divisi = Divisi::all();
         $data = [
@@ -96,6 +97,8 @@ class AssetController extends Controller
             'kategori'=>$kategori,
             'divisi'=>$divisi,
             'jabatan'=>$jabatan,
+            'search'=>$search,
+
         ];
         return view('admin.asset.create', $data);
     }

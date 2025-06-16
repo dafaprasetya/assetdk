@@ -25,8 +25,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request->input('search');
         $listbarang = Barang::all();
         $totalasset = $listbarang->count();
         $totalassetbaik = Barang::where('kondisi', 'Baik')->count();
@@ -63,12 +64,14 @@ class HomeController extends Controller
             'totalassetrusak'=> $totalassetrusak,
             'totalassetperbaikan'=> $totalassetperbaikan,
             'kategori'=>$kategori,
+            'search'=>$search,
         ];
         // dd($testing);
         return view('dashboard', $data);
     }
-    public function indexdkl()
+    public function indexdkl(Request $request)
     {
+        $search = $request->input('search');
         $listbarang = Barangdkl::all();
         $totalasset = $listbarang->count();
         $totalassetbaik = Barangdkl::where('kondisi', 'Baik')->count();
@@ -100,6 +103,8 @@ class HomeController extends Controller
             'totalassetrusak'=> $totalassetrusak,
             'totalassetperbaikan'=> $totalassetperbaikan,
             'kategori'=>$kategori,
+            'search'=>$search,
+
         ];
         // dd($testing);
         return view('dashboard', $data);
